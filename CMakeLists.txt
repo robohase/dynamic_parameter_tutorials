@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(dynamic_tutorials)
+project(dynamic_parameter_tutorials)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -31,6 +31,11 @@ install(TARGETS
   dynamic_tutorials_node
   DESTINATION lib/${PROJECT_NAME}
 )
+
+install(DIRECTORY
+  config
+  launch
+  DESTINATION share/${PROJECT_NAME})
 
 ament_package()
 

@@ -6,18 +6,26 @@ class DynamicTutorialsNode : public rclcpp::Node
 {
 public:
   DynamicTutorialsNode()
-  : Node("dynamic_tutorials"),
+  : Node("dynamic_tutorials_node"),
     int_param(0),
     double_param(0.0),
     str_param(""),
     bool_param(false),
     size(1)
   {
+    // パラメータの宣言と初期化
     this->declare_parameter<int>("int_param", int_param);
     this->declare_parameter<double>("double_param", double_param);
     this->declare_parameter<std::string>("str_param", str_param);
     this->declare_parameter<bool>("bool_param", bool_param);
     this->declare_parameter<int>("size", size);
+    
+    // パラメータの取得
+    this->get_parameter("int_param", int_param);
+    this->get_parameter("double_param", double_param);
+    this->get_parameter("str_param", str_param);
+    this->get_parameter("bool_param", bool_param);
+    this->get_parameter("size", size);
 
     auto parameter_change_cb = std::bind(&DynamicTutorialsNode::parameter_callback, this, std::placeholders::_1);
     reset_param_handler_ = this->add_on_set_parameters_callback(parameter_change_cb);

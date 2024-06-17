@@ -1,0 +1,7 @@
+dynamic_tutorials_node:
+  ros__parameters:
+    int_param: 0
+    double_param: 0.0
+    str_param: ""
+    bool_param: false
+    size: 1
